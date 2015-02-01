@@ -17,6 +17,26 @@
 
 The following simple JavaScript code creates a JsSIP User Agent instance and makes a SIP call:
 
+* index.html:
+
+```html
+<script src='rtcninja.js'></script>
+<script>
+  // Load rtcninja:
+  rtcninja();
+</script>
+
+<script src='jssip.js'></script>
+<script>
+  // Tell JsSIP to use rtcninja:
+  JsSIP.webrtc = rtcninja;
+</script>
+
+<script src='myscript.js'></script>
+```
+
+* myscript.js:
+
 ```javascript
 // Create our JsSIP instance and run it:
 

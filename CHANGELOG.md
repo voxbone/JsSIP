@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+Version 0.7.0 (released in 2015-02-01)
+--------------------------------------
+
+* Remove "rtcninja" module from JsSIP. Instead a new setter `JssIP.webrtc = engine` is provided (`engine` can be the "rtcninja" module). If not set, JsSIP attempts to get WebRTC related classes from the "window" namespace.
+* `RTCSession`: Rename `connection` attribute to `peerconnection`.
+
+
 Version 0.6.15 (released in 2015-01-31)
 --------------------------------------
 
