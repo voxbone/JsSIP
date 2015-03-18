@@ -41,8 +41,8 @@ var UA,
       'application/sdp',
       'application/dtmf-relay'
     ],
-
-    SUPPORTED: 'path, outbound, gruu',
+    //TSE: modified to add timer
+    SUPPORTED: 'path, outbound, gruu, timer',
 
     MAX_FORWARDS: 69,
     TAG_LENGTH: 10

@@ -78,7 +78,12 @@ RTCMediaHandler.prototype = {
   setLocalDescription: function(sessionDescription, onFailure) {
     this.peerConnection.setLocalDescription(
       sessionDescription,
-      null,
+      /*NITESH */
+      function(e){
+        console.log(LOG_PREFIX +"Set the local description");
+        console.log(e);
+      },
+      /*NITESH */
       function(e) {
         console.error(LOG_PREFIX +'unable to set local description');
         console.error(e);

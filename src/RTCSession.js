@@ -698,6 +698,8 @@ RTCSession.prototype.receiveRequest = function(request) {
       case JsSIP.C.INVITE:
         if(this.status === C.STATUS_CONFIRMED) {
           console.log(LOG_PREFIX +'re-INVITE received');
+          //TSE: respond to session timers
+          request.reply(200);
         }
         break;
       case JsSIP.C.INFO:
@@ -761,7 +763,9 @@ RTCSession.prototype.sendInitialRequest = function(constraints) {
    if (self.isCanceled || self.status === C.STATUS_TERMINATED) {
      return;
    }
-
+   /* NITESH --If the audio profile contains RTP/AVPF, then overwrite it with UDP/TLS/RTP/SAVPF */
+   offer = offer.replace(/\s+RTP\/SAVPF\s+/gm, " UDP/TLS/RTP/SAVPF ");
+   /*NITESH */
    self.request.body = offer;
    self.status = C.STATUS_INVITE_SENT;
    request_sender.send();
@@ -836,6 +840,10 @@ RTCSession.prototype.receiveResponse = function(response) {
         this.failed('remote', response, JsSIP.C.causes.BAD_MEDIA_DESCRIPTION);
         break;
       }
+
+      //TSE
+      response.body = response.body.replace(/\s+UDP\/TLS\/RTP\/SAVPF\s+/," RTP/SAVPF ");
+      response.body = response.body.replace(/:SHA-256 /,":sha-256 ");
 
       this.rtcMediaHandler.onMessage(
         'answer',
