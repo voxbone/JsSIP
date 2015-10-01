@@ -225,6 +225,27 @@ module.exports = {
     test.done();
   },
 
+  'parse Reason': function(test) {
+    var data, reason;
+
+    data = 'SIP  ; cause = 488 ; text = "Wrong SDP"';
+    reason = JsSIP.Grammar.parse(data, 'Reason');
+
+    test.strictEqual(reason.protocol, 'sip');
+    test.strictEqual(reason.cause, 488);
+    test.strictEqual(reason.text, 'Wrong SDP');
+
+    data = 'ISUP; cause=500 ; LALA = foo';
+    reason = JsSIP.Grammar.parse(data, 'Reason');
+
+    test.strictEqual(reason.protocol, 'isup');
+    test.strictEqual(reason.cause, 500);
+    test.strictEqual(reason.text, undefined);
+    test.strictEqual(reason.params.lala, 'foo');
+
+    test.done();
+  },
+
   'parse host': function(test) {
     var data, parsed;
 
@@ -262,5 +283,36 @@ module.exports = {
     //test.strictEqual(parsed.host_type, 'domain');
 
     test.done();
-  }
+  },
+
+  'parse Refer-To': function(test) {
+    var data, parsed;
+
+    data = 'sip:alice@versatica.com';
+    test.ok((parsed = JsSIP.Grammar.parse(data, 'Refer_To')) !== -1);
+    test.strictEqual(parsed.uri.scheme, 'sip');
+    test.strictEqual(parsed.uri.user, 'alice');
+    test.strictEqual(parsed.uri.host, 'versatica.com');
+
+    data = '<sip:bob@versatica.com?Accept-Contact=sip:bobsdesk.versatica.com>';
+    test.ok((parsed = JsSIP.Grammar.parse(data, 'Refer_To')) !== -1);
+    test.strictEqual(parsed.uri.scheme, 'sip');
+    test.strictEqual(parsed.uri.user, 'bob');
+    test.strictEqual(parsed.uri.host, 'versatica.com');
+    test.ok(parsed.uri.hasHeader('Accept-Contact') === true);
+
+    test.done();
+  },
+
+  'parse Replaces': function(test) {
+    var data, parsed;
+
+    data = '5t2gpbrbi72v79p1i8mr;to-tag=03aq91cl9n;from-tag=kun98clbf7';
+    test.ok((parsed = JsSIP.Grammar.parse(data, 'Replaces')) !== -1);
+    test.strictEqual(parsed.call_id, '5t2gpbrbi72v79p1i8mr');
+    test.strictEqual(parsed.to_tag, '03aq91cl9n');
+    test.strictEqual(parsed.from_tag, 'kun98clbf7');
+
+    test.done();
+  },
 };
