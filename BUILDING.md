@@ -35,8 +35,9 @@ $ npm install
 
 Finally, run `gulp dist` (or just `gulp`) to get:
 
-* `dist/jssip.js`: uncompressed version of JsSIP.
-* `dist/jssip.min.js`: compressed version of JsSIP.
+* `dist/jssip-X.Y.Z.js`: uncompressed version of JsSIP.
+* `dist/jssip-X.Y.Z.min.js`: compressed version of JsSIP.
+* `dist/jssip.js`: copy of the compressed file.
 
 ```bash
 $ gulp dist

@@ -1,61 +1,6 @@
 CHANGELOG
 =========
 
-Version 0.7.9 (released in 2015-10-16)
----------------------------------------
-
-* `UA`: Add `set(parameter, value)` method to change a configuration setting in runtime (currently just "password" is implemented).
-
-
-Version 0.7.8 (released in 2015-10-13)
----------------------------------------
-
-* `RTCSession`: Add `resetLocalMedia()` method to reset the session local MediaStream by enabling both its audio and video tracks (unless the remote peer is on hold).
-
-
-Version 0.7.7 (released in 2015-10-05)
----------------------------------------
-
-* `RTCSession`: Add "sending" event to outgoing, a good chance for the app to mangle the INVITE or its SDP offer.
-
-
-Version 0.7.6 (released in 2015-09-29)
----------------------------------------
-
-* Update dependencies.
-* Improve gulpfile.js.
-
-
-Version 0.7.5 (released in 2015-09-15)
----------------------------------------
-
-* Don't ask for `getUserMedia` in `RTCSession.answer()` if no `mediaConstraints` are provided.
-
-
-Version 0.7.4 (released in 2015-08-10)
----------------------------------------
-
-* Allow rejecting an in-dialog INVITE or UPDATE message.
-
-
-Version 0.7.3 (released in 2015-07-29)
----------------------------------------
-
-* FIX properly restart UA if start() is called while closing.
-
-
-Version 0.7.2 (released in 2015-07-27)
----------------------------------------
-
-* Update dependencies.
-
-
-Version 0.7.1 (released in 2015-07-27)
----------------------------------------
-
-* Update dependencies.
-
-
 Version 0.7.0 (released in 2015-07-23)
 ---------------------------------------
 
@@ -153,7 +98,7 @@ Version 0.6.19 (released in 2015-03-05)
 ---------------------------------------
 
 * Update dependencies.
- 
+* 
 
 Version 0.6.18 (released in 2015-02-09)
 --------------------------------------
@@ -218,7 +163,6 @@ Version 0.6.9 (released in 2015-01-27)
 
 * Don't reply 405 "Method Not Supported" to re-INVITE even if the UA's "newRTCSession" event is not set.
 * `RTCSession`: Allow extraHeaders in `renegotiate()`.
-
 
 Version 0.6.8 (released in 2015-01-26)
 --------------------------------------
@@ -295,7 +239,6 @@ Version 0.4.3 (released in 2014-10-29)
 
 * [(3b1ee11)](https://github.com/versatica/JsSIP/commit/3b1ee11) Fix references to 'this'.
 
-
 Version 0.4.2 (released in 2014-10-24)
 --------------------------------------
 
@@ -305,7 +248,6 @@ Version 0.4.1 (released in 2014-10-21)
 --------------------------------------
 
 This version is included into the [Bower](http://bower.io/) registry which means `$ bower install jssip`.
-
 
 Version 0.4.0 (released in 2014-10-21)
 --------------------------------------
@@ -344,7 +286,6 @@ Version 0.4.0 (released in 2014-10-21)
 * [(b5c08dc)](https://github.com/versatica/JsSIP/commit/b5c08dc) Fix #99. Do not close the RTCSession if it has been accepted and the WS disconnects
 * [(46eef46)](https://github.com/versatica/JsSIP/commit/46eef46) Fix #90. Don't log password
 * [(9ca4bc9)](https://github.com/versatica/JsSIP/commit/9ca4bc9) Fix #89. Do not send a To tag in '100 Trying' responses
-
 
 Version 0.3.0 (released in 2013-03-18)
 -------------------------------
@@ -424,7 +365,6 @@ Version 0.3.0 (released in 2013-03-18)
 * [(4e70a25)](https://github.com/versatica/JsSIP/commit/4e70a25) Allow 'text/plain' and 'text/html' content types for incoming SIP MESSAGE Fixed incoming SIP MESSAGE processing when the Content-Type header contains parameters
 * [(d5f3432)](https://github.com/versatica/JsSIP/commit/d5f3432) Fixed the message header split when a parsing error occurs. Parsing error log enhanced.
 
-
 Version 0.2.1 (released in 2012-11-15)
 -------------------------------
 
@@ -437,7 +377,6 @@ Version 0.2.1 (released in 2012-11-15)
 * [(0e8c5cf)](https://github.com/versatica/JsSIP/commit/0e8c5cf) Bug fix: Fixed Contact and Record-Route header split (reported by Davide Corda).
 * [(99243e4)](https://github.com/versatica/JsSIP/commit/99243e4) Fixed BYE and ACK error handling.
 * [(0c91285)](https://github.com/versatica/JsSIP/commit/0c91285) Fixed failure causes in 'registrationFailed' UA event.
-
 
 Version 0.2.0 (released in 2012-11-01)
 --------------------------------------
