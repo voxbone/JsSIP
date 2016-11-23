@@ -1,6 +1,208 @@
 CHANGELOG
 =========
 
+Version 2.0.6 (released in 2016-09-30)
+--------------------------------------
+
+* Improve library logs.
+
+
+Version 2.0.5 (released in 2016-09-28)
+--------------------------------------
+
+* Update dependencies.
+
+
+Version 2.0.4 (released in 2016-09-15)
+--------------------------------------
+
+* Fix #400. Corrupt NPM packege.
+
+
+Version 2.0.3 (released in 2016-08-23)
+--------------------------------------
+
+* Fix #385. No CANCEL request sent for authenticated requests.
+
+
+Version 2.0.2 (released in 2016-06-17)
+--------------------------------------
+
+* Fix `gulp-header` dependency version.
+
+
+Version 2.0.1 (released in 2016-06-09)
+--------------------------------------
+
+* Export `JsSIP.WebSocketInterface`.
+
+
+Version 2.0.0 (released in 2016-06-07)
+--------------------------------------
+
+* New 'contact_uri' configuration parameter.
+* Remove Node websocket dependency.
+* Fix #196. Improve 'hostname' parsing.
+* Fix #370. Outgoing request instance being shared by two transactions.
+* Fix #296. Abrupt transport disconnection on UA.stop().
+* Socket interface. Make JsSIP socket agnostic.
+
+
+Version 1.0.1 (released in 2016-05-17)
+---------------------------------------
+
+* Update dependencies.
+
+
+Version 1.0.0 (released in 2016-05-11)
+---------------------------------------
+
+* `RTCSession`: new event on('sdp') to allow SDP modifications.
+
+
+Version 0.7.23 (released in 2016-04-12)
+---------------------------------------
+
+* `RTCSession`: Allow multiple calls to `refer()` at the same time.
+
+
+Version 0.7.22 (released in 2016-04-06)
+---------------------------------------
+
+* `UA`: `set()` allows changing user's display name.
+* Ignore SDP answer in received ACK retransmissions (fix [367](https://github.com/versatica/JsSIP/issues/367)).
+
+
+Version 0.7.21 (released in 2016-04-05)
+---------------------------------------
+
+* `RTCSession`: Also emit `peerconnection` event for incoming INVITE without SDP.
+
+
+Version 0.7.20 (released in 2016-04-05)
+---------------------------------------
+
+* `RTCSession/ReferSubscriber`: Fix typo that breaks exposed API.
+
+
+Version 0.7.19 (released in 2016-04-05)
+---------------------------------------
+
+* `RTCSession`: Make `refer()` method to return the corresponding instance of `ReferSubscriber` so the app can set and manage as many events as desired on it.
+
+
+Version 0.7.18 (released in 2016-03-23)
+---------------------------------------
+
+* Add INFO method to allowed methods list
+* Add SIP Code 424 RFC 6442
+
+
+Version 0.7.17 (released in 2016-02-25)
+---------------------------------------
+
+* Apply changes of 0.7.16 also to browserified files under `dist/` folder.
+
+
+Version 0.7.16 (released in 2016-02-24)
+---------------------------------------
+
+* Fix [337](https://github.com/versatica/JsSIP/issues/337). Consistenly indicate registration status through events.
+
+
+Version 0.7.15 (released in 2016-02-24)
+---------------------------------------
+
+* Emit UA 'connected' event before sending REGISTER on transport connection
+* Fix [355](https://github.com/versatica/JsSIP/pull/355 ). call to non existent `parsed.error` function. Thanks Stéphane Alnet @shimaore
+
+
+Version 0.7.14 (released in 2016-02-17)
+---------------------------------------
+
+* Fix sips URI scheme parsing rule.
+
+
+Version 0.7.13 (released in 2016-02-10)
+---------------------------------------
+
+* Fix. Don't lowercase URI parameter values. Thanks to Alexandr Dubovikov @adubovikov
+
+
+Version 0.7.12 (released in 2016-02-05)
+---------------------------------------
+
+* Accept new `UA` configuration parameters `ha1` and `realm` to avoid plain SIP password handling ([issue 353](https://github.com/versatica/JsSIP/issues/353)).
+* New `UA.set()` and `UA.get()` methods to set and retrieve computed configuration parameters in runtime.
+
+
+Version 0.7.11 (released in 2015-12-17)
+---------------------------------------
+
+* Fix typo ("iceconnetionstatechange" => "iceconnectionstatechange"). Thanks to Vertika Srivastava.
+
+
+Version 0.7.10 (released in 2015-12-01)
+---------------------------------------
+
+* Make `gulp` run on Node 4.0.X and 5.0.X.
+
+
+Version 0.7.9 (released in 2015-10-16)
+---------------------------------------
+
+* `UA`: Add `set(parameter, value)` method to change a configuration setting in runtime (currently just "password" is implemented).
+
+
+Version 0.7.8 (released in 2015-10-13)
+---------------------------------------
+
+* `RTCSession`: Add `resetLocalMedia()` method to reset the session local MediaStream by enabling both its audio and video tracks (unless the remote peer is on hold).
+
+
+Version 0.7.7 (released in 2015-10-05)
+---------------------------------------
+
+* `RTCSession`: Add "sending" event to outgoing, a good chance for the app to mangle the INVITE or its SDP offer.
+
+
+Version 0.7.6 (released in 2015-09-29)
+---------------------------------------
+
+* Update dependencies.
+* Improve gulpfile.js.
+
+
+Version 0.7.5 (released in 2015-09-15)
+---------------------------------------
+
+* Don't ask for `getUserMedia` in `RTCSession.answer()` if no `mediaConstraints` are provided.
+
+
+Version 0.7.4 (released in 2015-08-10)
+---------------------------------------
+
+* Allow rejecting an in-dialog INVITE or UPDATE message.
+
+
+Version 0.7.3 (released in 2015-07-29)
+---------------------------------------
+
+* FIX properly restart UA if start() is called while closing.
+
+
+Version 0.7.2 (released in 2015-07-27)
+---------------------------------------
+
+* Update dependencies.
+
+
+Version 0.7.1 (released in 2015-07-27)
+---------------------------------------
+
+* Update dependencies.
+
+
 Version 0.7.0 (released in 2015-07-23)
 ---------------------------------------
 
@@ -98,7 +300,7 @@ Version 0.6.19 (released in 2015-03-05)
 ---------------------------------------
 
 * Update dependencies.
-* 
+ 
 
 Version 0.6.18 (released in 2015-02-09)
 --------------------------------------
@@ -163,6 +365,7 @@ Version 0.6.9 (released in 2015-01-27)
 
 * Don't reply 405 "Method Not Supported" to re-INVITE even if the UA's "newRTCSession" event is not set.
 * `RTCSession`: Allow extraHeaders in `renegotiate()`.
+
 
 Version 0.6.8 (released in 2015-01-26)
 --------------------------------------
@@ -239,6 +442,7 @@ Version 0.4.3 (released in 2014-10-29)
 
 * [(3b1ee11)](https://github.com/versatica/JsSIP/commit/3b1ee11) Fix references to 'this'.
 
+
 Version 0.4.2 (released in 2014-10-24)
 --------------------------------------
 
@@ -248,6 +452,7 @@ Version 0.4.1 (released in 2014-10-21)
 --------------------------------------
 
 This version is included into the [Bower](http://bower.io/) registry which means `$ bower install jssip`.
+
 
 Version 0.4.0 (released in 2014-10-21)
 --------------------------------------
@@ -286,6 +491,7 @@ Version 0.4.0 (released in 2014-10-21)
 * [(b5c08dc)](https://github.com/versatica/JsSIP/commit/b5c08dc) Fix #99. Do not close the RTCSession if it has been accepted and the WS disconnects
 * [(46eef46)](https://github.com/versatica/JsSIP/commit/46eef46) Fix #90. Don't log password
 * [(9ca4bc9)](https://github.com/versatica/JsSIP/commit/9ca4bc9) Fix #89. Do not send a To tag in '100 Trying' responses
+
 
 Version 0.3.0 (released in 2013-03-18)
 -------------------------------
@@ -365,6 +571,7 @@ Version 0.3.0 (released in 2013-03-18)
 * [(4e70a25)](https://github.com/versatica/JsSIP/commit/4e70a25) Allow 'text/plain' and 'text/html' content types for incoming SIP MESSAGE Fixed incoming SIP MESSAGE processing when the Content-Type header contains parameters
 * [(d5f3432)](https://github.com/versatica/JsSIP/commit/d5f3432) Fixed the message header split when a parsing error occurs. Parsing error log enhanced.
 
+
 Version 0.2.1 (released in 2012-11-15)
 -------------------------------
 
@@ -377,6 +584,7 @@ Version 0.2.1 (released in 2012-11-15)
 * [(0e8c5cf)](https://github.com/versatica/JsSIP/commit/0e8c5cf) Bug fix: Fixed Contact and Record-Route header split (reported by Davide Corda).
 * [(99243e4)](https://github.com/versatica/JsSIP/commit/99243e4) Fixed BYE and ACK error handling.
 * [(0c91285)](https://github.com/versatica/JsSIP/commit/0c91285) Fixed failure causes in 'registrationFailed' UA event.
+
 
 Version 0.2.0 (released in 2012-11-01)
 --------------------------------------

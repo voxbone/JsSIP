@@ -3,7 +3,6 @@ var JsSIP = require('../');
 
 
 module.exports = {
-
   'parse URI': function(test) {
     var data = 'SIP:%61liCE@versaTICA.Com:6060;TRansport=TCp;Foo=ABc;baz?X-Header-1=AaA1&X-Header-2=BbB&x-header-1=AAA2';
     var uri = JsSIP.URI.parse(data);
@@ -17,19 +16,19 @@ module.exports = {
     test.strictEqual(uri.hasParam('transport'), true);
     test.strictEqual(uri.hasParam('nooo'), false);
     test.strictEqual(uri.getParam('transport'), 'tcp');
-    test.strictEqual(uri.getParam('foo'), 'abc');
+    test.strictEqual(uri.getParam('foo'), 'ABc');
     test.strictEqual(uri.getParam('baz'), null);
     test.strictEqual(uri.getParam('nooo'), undefined);
     test.deepEqual(uri.getHeader('x-header-1'), ['AaA1', 'AAA2']);
     test.deepEqual(uri.getHeader('X-HEADER-2'), ['BbB']);
     test.strictEqual(uri.getHeader('nooo'), undefined);
-    test.strictEqual(uri.toString(), 'sip:aliCE@versatica.com:6060;transport=tcp;foo=abc;baz?X-Header-1=AaA1&X-Header-1=AAA2&X-Header-2=BbB');
+    test.strictEqual(uri.toString(), 'sip:aliCE@versatica.com:6060;transport=tcp;foo=ABc;baz?X-Header-1=AaA1&X-Header-1=AAA2&X-Header-2=BbB');
     test.strictEqual(uri.toAor(), 'sip:aliCE@versatica.com');
 
     // Alter data.
     uri.user = 'Iñaki:PASSWD';
     test.strictEqual(uri.user, 'Iñaki:PASSWD');
-    test.strictEqual(uri.deleteParam('foo'), 'abc');
+    test.strictEqual(uri.deleteParam('foo'), 'ABc');
     test.deepEqual(uri.deleteHeader('x-header-1'), ['AaA1', 'AAA2']);
     test.strictEqual(uri.toString(), 'sip:I%C3%B1aki:PASSWD@versatica.com:6060;transport=tcp;baz?X-Header-2=BbB');
     test.strictEqual(uri.toAor(), 'sip:I%C3%B1aki:PASSWD@versatica.com');
@@ -65,7 +64,7 @@ module.exports = {
     test.strictEqual(uri.hasParam('transport'), true);
     test.strictEqual(uri.hasParam('nooo'), false);
     test.strictEqual(uri.getParam('transport'), 'tcp');
-    test.strictEqual(uri.getParam('foo'), 'abc');
+    test.strictEqual(uri.getParam('foo'), 'ABc');
     test.strictEqual(uri.getParam('baz'), null);
     test.strictEqual(uri.getParam('nooo'), undefined);
     test.deepEqual(uri.getHeader('x-header-1'), ['AaA1', 'AAA2']);
@@ -77,7 +76,7 @@ module.exports = {
     test.strictEqual(name.display_name, 'Foo Bar');
     name.display_name = null;
     test.strictEqual(name.display_name, null);
-    test.strictEqual(name.toString(), '<sip:aliCE@versatica.com:6060;transport=tcp;foo=abc;baz?X-Header-1=AaA1&X-Header-1=AAA2&X-Header-2=BbB>;qwe=QWE;asd');
+    test.strictEqual(name.toString(), '<sip:aliCE@versatica.com:6060;transport=tcp;foo=ABc;baz?X-Header-1=AaA1&X-Header-1=AAA2&X-Header-2=BbB>;qwe=QWE;asd');
     uri.user = 'Iñaki:PASSWD';
     test.strictEqual(uri.toAor(), 'sip:I%C3%B1aki:PASSWD@versatica.com');
 
@@ -153,7 +152,7 @@ module.exports = {
     // Alter data.
     c3.uri.setParam('newUriParam', 'zxCV');
     c3.setParam('newHeaderParam', 'zxCV');
-    test.strictEqual(c3.toString(), '<sip:domain.com:5;newuriparam=zxcv>;newheaderparam=zxCV');
+    test.strictEqual(c3.toString(), '<sip:domain.com:5;newuriparam=zxCV>;newheaderparam=zxCV');
 
     test.done();
   },
@@ -275,12 +274,9 @@ module.exports = {
     test.ok((parsed = JsSIP.Grammar.parse(data, 'host')) !== -1);
     test.strictEqual(parsed.host_type, 'domain');
 
-    // TODO: This is a valid 'domain' but PEGjs finds a valid IPv4 first and does not move
-    // to 'domain' after IPv4 parsing has failed.
-    // NOTE: Let's ignore this issue for now to make `grunt test` happy.
-    //data = '1.2.3.4.bar.qwe-asd.foo';
-    //test.ok((parsed = JsSIP.Grammar.parse(data, 'host')) !== -1);
-    //test.strictEqual(parsed.host_type, 'domain');
+    data = '1.2.3.4.bar.qwe-asd.foo';
+    test.ok((parsed = JsSIP.Grammar.parse(data, 'host')) !== -1);
+    test.strictEqual(parsed.host_type, 'domain');
 
     test.done();
   },
@@ -314,5 +310,5 @@ module.exports = {
     test.strictEqual(parsed.from_tag, 'kun98clbf7');
 
     test.done();
-  },
+  }
 };
